@@ -48,8 +48,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # library
     'rest_framework',
     'rest_framework_simplejwt',
+    'rest_framework.authtoken',
+    'dj_rest_auth',
+    'dj_rest_auth.registration',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 
     # app
     'accounts',
@@ -183,3 +191,14 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
+
+# 소셜 로그인 관련
+
+SITE_ID = 1
+
+## dj_rest_auth.registration.views.SocialLoginView 를 쓰기 위함
+REST_USE_JWT = True
+
+GOOGLE_STATE = secrets["STATE"]
+SOCIAL_AUTH_GOOGLE_CLIENT_ID = secrets["SOCIAL_AUTH_GOOGLE_CLIENT_ID"]
+SOCIAL_AUTH_GOOGLE_SECRET = secrets["SOCIAL_AUTH_GOOGLE_SECRET"]
